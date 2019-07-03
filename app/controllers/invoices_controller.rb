@@ -4,7 +4,11 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all.limit(15)
+    # @invoices = Invoice.all.limit(15)
+    # @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id)
+    #                     .group(:invoice_id, :customer_id, :order_id, :sales_person_id)
+    #                     .limit(5)
+    @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).group(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).limit(6)
   end
 
   # GET /invoices/1
@@ -64,7 +68,8 @@ class InvoicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
-      @invoice = Invoice.find(params[:id])
+      @invoice = Invoice.where(:invoice_id => params[:id])
+      # @invoice = Invoice.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

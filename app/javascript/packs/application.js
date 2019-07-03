@@ -15,4 +15,22 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import Rails from 'rails-ujs'
+import Turbolinks from 'turbolinks'
+
+Rails.start()
+Turbolinks.start()
+
+import 'bootstrap'
+import '../stylesheets/application.scss'
+
+document.addEventListener("turbolinks:load", () => {
+  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+})
+
 console.log('Hello World from Webpacker')
+
+// $(document).ready(function(){
+//   $("msgid").html("Hello world!");
+// });

@@ -6,13 +6,7 @@ namespace :import do
   task invoices: :environment do
     
     puts 'Starting connection to SQL Server...'
-    client = TinyTds::Client.new(
-                  host: '192.168.1.8', 
-                  port:  '1433', 
-                  username: 'readonly', 
-                  password: '12345678', 
-                  database: 'PEN001'
-                  )
+    connect_to_database
     
     puts 'Connecting to SQL Server...'
     
@@ -69,15 +63,7 @@ namespace :import do
   task customers: :environment do
 
     puts 'Starting connection to SQL Server...'
-    client = TinyTds::Client.new(
-                  host: '192.168.1.8', 
-                  port:  '1433', 
-                  username: 'readonly', 
-                  password: '12345678', 
-                  database: 'PEN001'
-                  )
-
-    puts 'Connecting to SQL Server...'
+    connect_to_database
 
     if client.active? == true then
       puts 'Connected to SQL Server!' 
@@ -94,7 +80,7 @@ namespace :import do
                       RTRIM(PRICLIST) AS pricelist,
                       RTRIM(DATESTART) AS start_date
               FROM    PEN001.dbo.ARCUS
-              WHERE   SWACTV = 1"
+              WHERE   SWACTV = 1 OR SWACTV = 0"
 
     result = client.execute(sql)
 
@@ -119,5 +105,14 @@ namespace :import do
     Customer.import r, validate: true
 
     puts "Total Rails Dim_Customers table records imported: #{Customer.all.count}"
+  end
+  def connect_to_database
+    client = TinyTds::Client.new(
+                  host: '192.168.1.8', 
+                  port:  '1433', 
+                  username: 'readonly', 
+                  password: '12345678', 
+                  database: 'PEN001'
+                  )    
   end
 end
