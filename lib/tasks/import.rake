@@ -3,10 +3,14 @@ namespace :import do
   
   require 'tiny_tds'
 
+  desc "Import all records from all import tables"
+  task all: [:invoices, :customers]
+
+  desc "Import invoice records"
   task invoices: :environment do
-    
+
     puts 'Starting connection to SQL Server...'
-    connect_to_database
+    client = connect_to_database
     
     puts 'Connecting to SQL Server...'
     
@@ -63,7 +67,7 @@ namespace :import do
   task customers: :environment do
 
     puts 'Starting connection to SQL Server...'
-    connect_to_database
+    client = connect_to_database
 
     if client.active? == true then
       puts 'Connected to SQL Server!' 

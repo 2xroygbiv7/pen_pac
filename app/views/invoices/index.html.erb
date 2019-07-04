@@ -26,14 +26,6 @@
         <td><%= invoice.order_id.strip %></td>
         <td><%= invoice.sales_person_id %></td>
         <td><%= invoice.invoice_date %></td>
-
-<% if false %>
-        <td><%= link_to invoice.invoice_id, invoice %></td>
-        <td><%= invoice.customer_id.strip %></td>
-        <td><%= invoice.order_id.strip %></td>
-        <td><%= invoice.sales_person_id.strip.to_i %></td>
-        <td><%= invoice.invoice_date.strip.to_i %></td>
-<% end %>
       </tr>
     <% end %>
   </tbody>

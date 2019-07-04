@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class=container>
-<strong>Invoice: </strong><%= @invoice.first.invoice_id %><br>
+<strong>Invoice Number: </strong><%= @invoice.first.invoice_id %><br>
 <strong>Customer ID: </strong><%= @invoice.first.customer_id %><br>
 <strong>Customer Name: </strong><%= @invoice.first.customer.customer_name %><br>
 <br>
-<table class="table tablestriped">
+<table class="table table-striped">
   <head>
     <tr>
       <th>Item</th>
@@ -13,7 +13,7 @@
       <th>Backorder Qty</th>
       <th>Shipped Qty</th>
       <th>Unit Price</th>
-      <th>Invoice Price</th>
+      <th>Total Price</th>
     </tr>
   </head>
   <tbody>
@@ -30,36 +30,6 @@
   </tbody>
 </table>
 </div>
-
-<% if false %>
-  <strong>Invoice:</strong><%= @invoice.invoice_id %>
-  <strong>Customer ID:</strong><%= @invoice.customer_id %>
-  <strong>Customer Name:</strong><%= @invoice.customer.customer_name %>
-  <table>
-    <head>
-      <tr>
-        <th>Item</th>
-        <th>Order Qty</th>
-        <th>Backorder Qty</th>
-        <th>Shipped Qty</th>
-        <th>Unit Price</th>
-        <th>Invoice Price</th>
-      </tr>
-    </head>
-    <tbody>
-      <% @invoice.each do |invoice| %>
-        <tr>
-          <td><%= invoice.item_id %></td>
-          <td><%= invoice.order_qty.to_i %></td>
-          <td><%= invoice.backorder_qty.to_i %></td>
-          <td><%= invoice.shipped_qty.to_i %></td>
-          <td><%= invoice.unit_price %></td>
-          <td><%= invoice.invoice_price %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
 <br>
 <%= link_to 'Back', invoices_path %>
 
