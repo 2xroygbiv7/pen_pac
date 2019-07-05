@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-<h1>Invoices</h1>
+  <h1>Invoices</h1>
 
-<div id="msgid"></div>
+  <div id="msgid"></div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Invoice</th>
-      <th>Customer ID</th>
-      <th>Customer Name</th>
-      <th>Order</th>
-      <th>Sales Rep</th>
-      <th>Invoice Date</th>
-    </tr>
-  </thead>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Invoice</th>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Order</th>
+        <th>Sales Rep</th>
+        <th>Invoice Date</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @invoices.each do |invoice| %>
+    <tbody>
+      <% @invoices.each do |invoice| %>
       <tr>
         <td><%= link_to invoice.invoice_id, :action => :show, :id => invoice.invoice_id %></td>
         <td><%= invoice.customer_id %></td>
@@ -27,7 +27,7 @@
         <td><%= invoice.sales_person_id %></td>
         <td><%= invoice.invoice_date %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 </div>

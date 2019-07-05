@@ -11,5 +11,10 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/2xroygbiv7/pen_pac.git",
+  "author": "Patrick Dunn <Patrickdunn@patorikacBookea.lan>",
+  "license": "MIT"
 }

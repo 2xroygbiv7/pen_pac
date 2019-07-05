@@ -8,7 +8,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :postcode
       t.string :pricelist
-      t.string :start_date
+      t.date :start_date
       t.timestamps
     end
   end

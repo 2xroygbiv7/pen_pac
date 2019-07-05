@@ -1,22 +1,18 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
-  # GET /invoices
-  # GET /invoices.json
   def index
-    # @invoices = Invoice.all.limit(15)
-    # @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id)
-    #                     .group(:invoice_id, :customer_id, :order_id, :sales_person_id)
-    #                     .limit(5)
     @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).group(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).limit(6)
   end
 
-  # GET /invoices/1
-  # GET /invoices/1.json
   def show
   end
 
-  # GET /invoices/new
+  def result
+    # @data = Daru::Dataframe.from_activerecord(@invoices, )
+    @data_frame = Daru::DataFrame.from_activerecord(Invoice.last(50))
+  end
+
   def new
     @invoice = Invoice.new
   end
