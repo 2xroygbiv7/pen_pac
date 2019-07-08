@@ -23,7 +23,7 @@
         <td><%= link_to invoice.invoice_id, :action => :show, :id => invoice.invoice_id %></td>
         <td><%= invoice.customer_id %></td>
         <td><%= invoice.customer.customer_name %></td>
-        <td><%= invoice.order_id.strip %></td>
+        <td><%= invoice.order_id %></td>
         <td><%= invoice.sales_person_id %></td>
         <td><%= invoice.invoice_date %></td>
       </tr>

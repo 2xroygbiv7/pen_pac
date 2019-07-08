@@ -8,6 +8,16 @@ class InvoicesController < ApplicationController
   def show
   end
 
+  def analysis
+    @customer_id = 'COM002'
+    sales = []
+    12.times.each{|i| sales << 0}
+    i = Invoice.where(customer_id: @customer_id).limit(200)
+    i.each { |record| sales[record.fiscal_month] += record.invoice_price } 
+    @result = sales
+    @total = @result.each.sum
+  end
+
   def result
     # @data = Daru::Dataframe.from_activerecord(@invoices, )
     @data_frame = Daru::DataFrame.from_activerecord(Invoice.last(50))
@@ -15,50 +25,6 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
-  end
-
-  # GET /invoices/1/edit
-  def edit
-  end
-
-  # POST /invoices
-  # POST /invoices.json
-  def create
-    @invoice = Invoice.new(invoice_params)
-
-    respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-        format.json { render :show, status: :created, location: @invoice }
-      else
-        format.html { render :new }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /invoices/1
-  # PATCH/PUT /invoices/1.json
-  def update
-    respond_to do |format|
-      if @invoice.update(invoice_params)
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
-        format.json { render :show, status: :ok, location: @invoice }
-      else
-        format.html { render :edit }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /invoices/1
-  # DELETE /invoices/1.json
-  def destroy
-    @invoice.destroy
-    respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

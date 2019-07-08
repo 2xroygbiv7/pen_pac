@@ -24,16 +24,14 @@
     </thead>
 
     <tbody>
-      <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.customer%></td>
-        <td><%= invoice.customer_id %></td>
-        <td><%= invoice.customer.customer_name %></td>
-        <td><%= invoice.order_id.strip %></td>
-        <td><%= invoice.sales_person_id %></td>
-        <td><%= invoice.invoice_date %></td>
+        <td><%=@customer_id%></td>
+        <% @result.each do |revenue| %>
+        <td><%= revenue %></td>
+        <% end %>
+        <td><%= @total %></td>
       </tr>
-      <% end %>
     </tbody>
   </table>
+
 </div>

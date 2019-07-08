@@ -8,8 +8,8 @@ class CreateInvoices < ActiveRecord::Migration[5.2]
       t.integer :order_qty
       t.integer :backorder_qty
       t.integer :shipped_qty
-      t.decimal :unit_price
-      t.decimal :invoice_price
+      t.decimal :unit_price, precision: 8, scale: 2
+      t.decimal :invoice_price, precision: 8, scale: 2
       t.integer :fiscal_year
       t.integer :fiscal_month
       t.date :invoice_date
