@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <h1>Index Page</h1>
+
+  <div class="search_form">
+    <%= search_form_for @q do |f| %>
+    <%= f.label :customer_id_cont, "Cusomter Id contains: " %>
+    <%= f.search_field :customer_id_cont %>
+    <%= f.label :fiscal_year_eq, "Fiscal year: " %>
+    <%= f.search_field :fiscal_year_eq %>
+    <%= f.label :fiscal_month_eq, "Fiscal year: " %>
+    <%= f.search_field :fiscal_month_eq %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>

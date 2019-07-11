@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+
+  root to: 'pages#index'
   
   match '/invoices/result/', to: 'invoices#result', as: :result_invoice, via: :get
   match '/invoices/analysis/', to: 'invoices#analysis', as: :analysis_invoice, via: :get
-  
+  match '/pages', to: 'pages#index', as: :pages, via: :get
+
   resources :invoices
+
+  
   
   # get '/invoices/result', to: "invoices#result", as: :result_invoice
   # root to: 'invoices#index'

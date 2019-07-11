@@ -58,4 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'tiny_tds'
 gem 'activerecord-import'
-gem 'daru', '~> 0.1.1'
+# gem 'daru', '~> 0.1.1'
+gem 'ransack', '~> 2.1.1'
+# gem 'ransack', github: 'activerecord-hackery/ransack'

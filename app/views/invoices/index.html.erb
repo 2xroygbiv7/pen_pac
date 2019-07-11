@@ -18,7 +18,7 @@
     </thead>
 
     <tbody>
-      <% @invoices.each do |invoice| %>
+      <% @result.each do |invoice| %>
       <tr>
         <td><%= link_to invoice.invoice_id, :action => :show, :id => invoice.invoice_id %></td>
         <td><%= invoice.customer_id %></td>

@@ -3,10 +3,18 @@
 
   <div id="msgid"></div>
 
+  <div class="search_form">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :customer_id_cont, "Cusomter Id contains: " %>
+      <%= f.search_field :customer_id_cont %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Customer</th>
+        <th>Customer Id</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>

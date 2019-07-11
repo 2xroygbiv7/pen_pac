@@ -1,21 +1,29 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :analysis, :index]
 
   def index
-    @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).group(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).limit(6)
+    @q = Invoice.ransack(params[:q])
+    @result = @q.result
+    # @invoices = Invoice.select(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).group(:invoice_id, :customer_id, :order_id, :sales_person_id, :invoice_date).limit(6)
   end
 
   def show
   end
 
   def analysis
-    @customer_id = 'COM002'
-    sales = []
-    12.times.each{|i| sales << 0}
-    i = Invoice.where(customer_id: @customer_id).limit(200)
-    i.each { |record| sales[record.fiscal_month] += record.invoice_price } 
-    @result = sales
-    @total = @result.each.sum
+# byebug
+#     @q = Invoice.ransack(params[:q])
+# # byebug
+#     @result = @q.result
+    # redirect_to analysis_invoice_url
+
+    # @customer_id = 'COM002'
+    # sales = []
+    # 12.times.each{|i| sales << 0}
+    # i = Invoice.where(customer_id: @customer_id).limit(200)
+    # i.each { |record| sales[record.fiscal_month] += record.invoice_price } 
+    # @result = sales
+    # @total = @result.each.sum
   end
 
   def result
